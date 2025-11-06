@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library name="Главная библиотека">
+  <books>
+    <book isbn="978-5-699-12014-7">
+      <title>Война и мир</title>
+      <year>1869</year>
+      <pages>1225</pages>
+      <authors>
+        <author author_id="A1">
+          <name>Лев Толстой</name>
+          <birth_year>1828</birth_year>
+          <country>Россия</country>
+        </author>
+      </authors>
+      <genre>
+        <name>Роман</name>
+        <description>Крупное повествовательное произведение</description>
+      </genre>
+      <publisher publisher_id="P1">
+        <name>Эксмо</name>
+        <location>Москва</location>
+      </publisher>
+      <borrow_records>
+        <record record_id="br_1">
+          <user_id>U1</user_id>
+          <borrow_date>2025-11-06T10:00:00</borrow_date>
+          <due_date>2025-11-20T10:00:00</due_date>
+        </record>
+      </borrow_records>
+      <reviews/>
+    </book>
+    <book isbn="978-5-17-067555-8">
+      <title>Преступление и наказание</title>
+      <year>1866</year>
+      <pages>671</pages>
+      <authors>
+        <author author_id="A2">
+          <name>Фёдор Достоевский</name>
+          <birth_year>1821</birth_year>
+          <country>Россия</country>
+        </author>
+      </authors>
+      <genre>
+        <name>Роман</name>
+        <description>Крупное повествовательное произведение</description>
+      </genre>
+      <publisher publisher_id="P2">
+        <name>АСТ</name>
+        <location>Москва</location>
+      </publisher>
+      <borrow_records/>
+      <reviews/>
+    </book>
+    <book isbn="978-5-389-08255-5">
+      <title>Вишневый сад</title>
+      <year>1904</year>
+      <pages>150</pages>
+      <authors>
+        <author author_id="A3">
+          <name>Антон Чехов</name>
+          <birth_year>1860</birth_year>
+          <country>Россия</country>
+        </author>
+      </authors>
+      <genre>
+        <name>Рассказ</name>
+        <description>Небольшое прозаическое произведение</description>
+      </genre>
+      <publisher publisher_id="P1">
+        <name>Эксмо</name>
+        <location>Москва</location>
+      </publisher>
+      <borrow_records/>
+      <reviews/>
+    </book>
+  </books>
+  <users>
+    <user user_id="U1">
+      <name>Иван Петров</name>
+      <borrowed_books>
+        <book_isbn>978-5-699-12014-7</book_isbn>
+      </borrowed_books>
+    </user>
+    <user user_id="U2">
+      <name>Мария Сидорова</name>
+      <borrowed_books/>
+    </user>
+  </users>
+  <statistics>
+    <total_books>3</total_books>
+    <total_users>2</total_users>
+    <total_authors>3</total_authors>
+    <active_borrows>1</active_borrows>
+    <overdue_books>0</overdue_books>
+    <active_reservations>0</active_reservations>
+    <unpaid_fines>0</unpaid_fines>
+    <total_reviews>0</total_reviews>
+  </statistics>
+</library>
