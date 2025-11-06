@@ -1,0 +1,112 @@
+{
+  "library": {
+    "name": "Главная библиотека",
+    "books": [
+      {
+        "isbn": "978-5-699-12014-7",
+        "title": "Война и мир",
+        "year": 1869,
+        "pages": 1225,
+        "authors": [
+          {
+            "author_id": "A1",
+            "name": "Лев Толстой",
+            "birth_year": 1828,
+            "country": "Россия"
+          }
+        ],
+        "genre": {
+          "name": "Роман",
+          "description": "Крупное повествовательное произведение"
+        },
+        "publisher": {
+          "publisher_id": "P1",
+          "name": "Эксмо",
+          "location": "Москва"
+        },
+        "borrow_records": [
+          {
+            "record_id": "br_1",
+            "user_id": "U1",
+            "borrow_date": "2025-11-06T10:00:00",
+            "due_date": "2025-11-20T10:00:00",
+            "return_date": null
+          }
+        ],
+        "reviews": []
+      },
+      {
+        "isbn": "978-5-17-067555-8",
+        "title": "Преступление и наказание",
+        "year": 1866,
+        "pages": 671,
+        "authors": [
+          {
+            "author_id": "A2",
+            "name": "Фёдор Достоевский",
+            "birth_year": 1821,
+            "country": "Россия"
+          }
+        ],
+        "genre": {
+          "name": "Роман",
+          "description": "Крупное повествовательное произведение"
+        },
+        "publisher": {
+          "publisher_id": "P2",
+          "name": "АСТ",
+          "location": "Москва"
+        },
+        "borrow_records": [],
+        "reviews": []
+      },
+      {
+        "isbn": "978-5-389-08255-5",
+        "title": "Вишневый сад",
+        "year": 1904,
+        "pages": 150,
+        "authors": [
+          {
+            "author_id": "A3",
+            "name": "Антон Чехов",
+            "birth_year": 1860,
+            "country": "Россия"
+          }
+        ],
+        "genre": {
+          "name": "Рассказ",
+          "description": "Небольшое прозаическое произведение"
+        },
+        "publisher": {
+          "publisher_id": "P1",
+          "name": "Эксмо",
+          "location": "Москва"
+        },
+        "borrow_records": [],
+        "reviews": []
+      }
+    ],
+    "users": [
+      {
+        "user_id": "U1",
+        "name": "Иван Петров",
+        "borrowed_books": ["978-5-699-12014-7"]
+      },
+      {
+        "user_id": "U2",
+        "name": "Мария Сидорова",
+        "borrowed_books": []
+      }
+    ],
+    "statistics": {
+      "total_books": 3,
+      "total_users": 2,
+      "total_authors": 3,
+      "active_borrows": 1,
+      "overdue_books": 0,
+      "active_reservations": 0,
+      "unpaid_fines": 0,
+      "total_reviews": 0
+    }
+  }
+}
