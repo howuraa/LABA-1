@@ -1,5 +1,5 @@
 from typing import List, Optional, Dict, Any
-from datetime import datetime, timedelta
+from datetime import datetime,timedelta
 import json
 import xml.etree.ElementTree as ET
 
@@ -10,276 +10,221 @@ class LibraryException(Exception):
     """Базовое исключение для всех ошибок библиотеки."""
     pass
 
-
 class AuthorError(LibraryException):
     """Базовое исключение для ошибок автора."""
     pass
-
 
 class InvalidAuthorNameError(AuthorError):
     """Имя автора пустое или некорректное."""
     pass
 
-
 class InvalidAuthorIDError(AuthorError):
     """ID автора пустой или некорректный."""
     pass
-
 
 class InvalidBirthYearError(AuthorError):
     """Некорректный год рождения автора."""
     pass
 
-
 class GenreError(LibraryException):
     """Базовое исключение для ошибок жанра."""
     pass
-
 
 class InvalidGenreNameError(GenreError):
     """Название жанра пустое или некорректное."""
     pass
 
-
 class InvalidGenreDescriptionError(GenreError):
     """Описание жанра некорректное."""
     pass
-
 
 class PublisherError(LibraryException):
     """Базовое исключение для ошибок издателя."""
     pass
 
-
 class InvalidPublisherNameError(PublisherError):
     """Имя издателя пустое или некорректное."""
     pass
-
 
 class InvalidPublisherIDError(PublisherError):
     """ID издателя пустой или некорректный."""
     pass
 
-
 class InvalidLocationError(PublisherError):
     """Локация издателя некорректная."""
     pass
-
 
 class BookError(LibraryException):
     """Базовое исключение для ошибок книги."""
     pass
 
-
 class InvalidBookTitleError(BookError):
     """Название книги пустое или некорректное."""
     pass
-
 
 class InvalidISBNError(BookError):
     """ISBN книги пустой или некорректный."""
     pass
 
-
 class BookAuthorsListError(BookError):
     """Список авторов книги пустой или некорректный."""
     pass
-
 
 class InvalidBookPublisherError(BookError):
     """Издатель книги некорректный."""
     pass
 
-
 class InvalidBookGenreError(BookError):
     """Жанр книги некорректный."""
     pass
-
 
 class InvalidBookYearError(BookError):
     """Год издания книги некорректный."""
     pass
 
-
 class InvalidBookPagesError(BookError):
     """Количество страниц должно быть положительным числом."""
     pass
-
 
 class UserError(LibraryException):
     """Базовое исключение для ошибок пользователя."""
     pass
 
-
 class InvalidUserNameError(UserError):
     """Имя пользователя пустое или некорректное."""
     pass
-
 
 class InvalidUserIDError(UserError):
     """ID пользователя пустой или некорректный."""
     pass
 
-
 class InvalidBorrowedBooksError(UserError):
     """Список заимствованных книг некорректный."""
     pass
-
 
 class BorrowRecordError(LibraryException):
     """Базовое исключение для ошибок записей о заимствовании."""
     pass
 
-
 class InvalidRecordIDError(BorrowRecordError):
     """ID записи пустой или некорректный."""
     pass
-
 
 class InvalidBookReferenceError(BorrowRecordError):
     """Ссылка на книгу некорректная."""
     pass
 
-
 class InvalidUserReferenceError(BorrowRecordError):
     """Ссылка на пользователя некорректная."""
     pass
-
 
 class InvalidBorrowDateError(BorrowRecordError):
     """Дата выдачи некорректная."""
     pass
 
-
 class InvalidDueDateError(BorrowRecordError):
     """Срок возврата некорректный."""
     pass
-
 
 class InvalidReturnDateError(BorrowRecordError):
     """Дата возврата некорректная."""
     pass
 
-
 class DateConsistencyError(BorrowRecordError):
     """Несоответствие дат (например, возврат раньше выдачи)."""
     pass
-
 
 class FineError(LibraryException):
     """Базовое исключение для ошибок штрафов."""
     pass
 
-
 class InvalidFineIDError(FineError):
     """ID штрафа пустой или некорректный."""
     pass
-
 
 class InvalidFineAmountError(FineError):
     """Сумма штрафа некорректная."""
     pass
 
-
 class InvalidFineReasonError(FineError):
     """Причина штрафа пустая или некорректная."""
     pass
-
 
 class InvalidFineReferenceError(FineError):
     """Ссылка на запись о заимствовании некорректная."""
     pass
 
-
 class ReservationError(LibraryException):
     """Базовое исключение для ошибок резервирования."""
     pass
-
 
 class InvalidReservationIDError(ReservationError):
     """ID резервирования пустой или некорректный."""
     pass
 
-
 class InvalidReservationDateError(ReservationError):
     """Дата резервирования некорректная."""
     pass
-
 
 class InvalidExpiryDateError(ReservationError):
     """Дата истечения резервирования некорректная."""
     pass
 
-
 class ReservationDateConsistencyError(ReservationError):
     """Несоответствие дат резервирования."""
     pass
-
 
 class ExpireDateConsistencyError(ReservationError):
     """Несоответствие дат резервирования."""
     pass
 
-
 class ReviewError(LibraryException):
     """Базовое исключение для ошибок отзывов."""
     pass
-
 
 class InvalidReviewIDError(ReviewError):
     """ID отзыва пустой или некорректный."""
     pass
 
-
 class InvalidRatingError(ReviewError):
     """Рейтинг некорректный (должен быть от 1 до 5)."""
     pass
-
 
 class InvalidReviewCommentError(ReviewError):
     """Комментарий отзыва некорректный."""
     pass
 
-
 class InvalidReviewDateError(ReviewError):
     """Дата отзыва некорректная."""
     pass
-
 
 class LibrarianError(LibraryException):
     """Базовое исключение для ошибок библиотекаря."""
     pass
 
-
 class InvalidEmployeeIDError(LibrarianError):
     """ID сотрудника пустой или некорректный."""
     pass
-
 
 class InvalidDepartmentError(LibrarianError):
     """Отдел библиотекаря некорректный."""
     pass
 
-
 class LibraryManagementError(LibraryException):
     """Базовое исключение для ошибок управления библиотекой."""
     pass
-
 
 class DuplicateItemError(LibraryManagementError):
     """Попытка добавить дублирующий элемент."""
     pass
 
-
 class ItemNotFoundError(LibraryManagementError):
     """Элемент не найден."""
     pass
 
-
 class LibraryOperationError(LibraryManagementError):
     """Ошибка выполнения операции в библиотеке."""
     pass
-
 
 class InvalidLibraryNameError(LibraryManagementError):
     """Название библиотеки пустое или некорректное."""
@@ -312,7 +257,6 @@ class Author:
         if not value or not value.strip():
             raise InvalidAuthorIDError("ID автора обязательно и не может быть пустым")
         self._author_id = value.strip()
-
     @property
     def name(self) -> str:
         return self._name
@@ -342,6 +286,7 @@ class Author:
     def country(self, value: Optional[str]) -> None:
         self._country = value
 
+     
     def get_age(self) -> Optional[int]:
         """Возвращает возраст автора (если известен год рождения)"""
         if self._birth_year is None:
@@ -352,6 +297,8 @@ class Author:
         """Проверяет, является ли автор современным (родился после 1900)"""
         return self._birth_year is not None and self._birth_year > 1900
 
+
+     
     def to_dict(self) -> Dict[str, Any]:
         return {
             "author_id": self._author_id,
@@ -411,6 +358,7 @@ class Genre:
         """Проверяет, есть ли описание у жанра"""
         return bool(self._description.strip())
 
+     
     def to_dict(self) -> dict:
         return {
             "name": self._name,
@@ -468,10 +416,12 @@ class Publisher:
     def location(self, value: Optional[str]) -> None:
         self._location = value
 
+     
     def has_location(self) -> bool:
         """Проверяет, указана ли локация издателя"""
         return self._location is not None and bool(self._location.strip())
 
+     
     def to_dict(self) -> Dict[str, Any]:
         return {
             "publisher_id": self._publisher_id,
@@ -590,6 +540,7 @@ class Book:
             raise InvalidBookPagesError("Количество страниц должно быть положительным числом")
         self._pages = value
 
+     
     def add_author(self, author: Author) -> None:
         """Добавляет автора к книге"""
         if not isinstance(author, Author):
@@ -604,6 +555,7 @@ class Book:
         if not self._authors:
             raise BookAuthorsListError("Книга должна иметь хотя бы одного автора")
 
+     
     def to_dict(self) -> Dict[str, Any]:
         return {
             "isbn": self._isbn,
@@ -655,8 +607,7 @@ class User:
             raise InvalidUserNameError("Имя пользователя обязательно и не может быть пустым")
         self._user_id = user_id.strip()
         self._name = name.strip()
-        self._borrowed_books: List[Book] = []
-
+        self._borrowed_books: List[Book] = [] 
     @property
     def user_id(self) -> str:
         return self._user_id
@@ -687,6 +638,7 @@ class User:
             raise UserError("borrowed_books должен быть списком объектов Book")
         self._borrowed_books = value
 
+     
     def borrow_book(self, book: Book) -> None:
         """Добавляет книгу в список заимствованных"""
         if book not in self._borrowed_books:
@@ -697,11 +649,12 @@ class User:
         if book in self._borrowed_books:
             self._borrowed_books.remove(book)
 
+     
     def to_dict(self) -> Dict[str, Any]:
         return {
             "user_id": self._user_id,
             "name": self._name,
-            "borrowed_books": [b.isbn for b in self._borrowed_books]
+            "borrowed_books": [b.isbn for b in self._borrowed_books] 
         }
 
     @classmethod
@@ -719,7 +672,6 @@ class User:
     def __str__(self) -> str:
         borrowed = ", ".join([b.title for b in self._borrowed_books]) or "нет книг"
         return f"ID: {self._user_id}\nИмя: {self._name}\nЗаимствованные книги: {borrowed}"
-
 
 class BorrowRecord:
     """Класс записи о заимствовании книги"""
@@ -747,6 +699,7 @@ class BorrowRecord:
         self._borrow_date = borrow_date
         self._due_date = due_date
         self._return_date = return_date
+
 
     @property
     def record_id(self) -> str:
@@ -808,6 +761,7 @@ class BorrowRecord:
             raise InvalidReturnDateError("Дата возврата не может быть раньше даты выдачи")
         self._return_date = value
 
+     
     def is_overdue(self) -> bool:
         """Проверяет, просрочена ли книга"""
         current_date = datetime.now()
@@ -828,6 +782,7 @@ class BorrowRecord:
         """Проверяет, возвращена ли книга"""
         return self._return_date is not None
 
+     
     def to_dict(self) -> Dict[str, Any]:
         return {
             "record_id": self._record_id,
@@ -967,10 +922,12 @@ class Fine:
     def paid(self, value: bool) -> None:
         self._paid = value
 
+     
     def pay_fine(self) -> None:
         """Отмечает штраф как оплаченный"""
         self._paid = True
 
+     
     def to_dict(self) -> Dict[str, Any]:
         return {
             "fine_id": self._fine_id,
@@ -1016,7 +973,6 @@ class Fine:
                 f"Причина: {self._reason}\n"
                 f"Статус: {status}\n")
 
-
 class Reservation:
     """Класс резервирования книги"""
 
@@ -1043,6 +999,7 @@ class Reservation:
         self._expiry_date = expiry_date
         self._active = True
 
+     
     @property
     def reservation_id(self) -> str:
         return self._reservation_id
@@ -1101,6 +1058,7 @@ class Reservation:
     def active(self, value: bool) -> None:
         self._active = value
 
+     
     def cancel_reservation(self) -> None:
         """Отменяет резервирование"""
         self._active = False
@@ -1123,6 +1081,7 @@ class Reservation:
             return 0
         return (self._expiry_date - datetime.now()).days
 
+     
     def to_dict(self) -> Dict[str, Any]:
         return {
             "reservation_id": self._reservation_id,
@@ -1172,7 +1131,6 @@ class Reservation:
                 f"Статус: {status}{expired}\n"
                 f"Дней до истечения: {self.get_days_until_expiry()}")
 
-
 class Review:
     """Класс отзыва на книгу"""
 
@@ -1200,6 +1158,7 @@ class Review:
         self._comment = comment.strip()
         self._review_date = review_date or datetime.now()
 
+     
     @property
     def review_id(self) -> str:
         return self._review_id
@@ -1256,6 +1215,7 @@ class Review:
     def review_date(self, value: datetime) -> None:
         self._review_date = value
 
+     
     def is_positive(self) -> bool:
         """Проверяет, является ли отзыв положительным (4-5 баллов)"""
         return self._rating >= 4
@@ -1269,6 +1229,7 @@ class Review:
         sentiment = "Положительный" if self.is_positive() else "Отрицательный" if self.is_negative() else "Нейтральный"
         return f"{sentiment} отзыв ({self._rating}/5): {self._comment[:50]}{'...' if len(self._comment) > 50 else ''}"
 
+     
     def to_dict(self) -> Dict[str, Any]:
         return {
             "review_id": self._review_id,
@@ -1314,7 +1275,6 @@ class Review:
                 f"Комментарий: {self._comment or 'без комментария'}\n"
                 f"Дата: {self._review_date.strftime('%d.%m.%Y %H:%M')}")
 
-
 class Library:
     """Главный класс-менеджер библиотеки"""
 
@@ -1333,6 +1293,7 @@ class Library:
         self._reservations: Dict[str, Reservation] = {}
         self._reviews: Dict[str, Review] = {}
 
+     
     @property
     def name(self) -> str:
         return self._name
@@ -1569,6 +1530,7 @@ class Library:
             "total_reviews": len(self._reviews)
         }
 
+     
     def to_dict(self) -> Dict[str, Any]:
         """Сохраняет всю библиотеку в словарь"""
         return {
@@ -1649,7 +1611,6 @@ class Library:
                 f"Неоплаченные штрафы: {stats['unpaid_fines']}\n"
                 f"Отзывы: {stats['total_reviews']}")
 
-
 class Librarian(User):
     """Класс библиотекаря - расширенный пользователь с админ-правами"""
 
@@ -1668,6 +1629,7 @@ class Librarian(User):
         self._department = department.strip()
         self._admin_rights = True
 
+     
     @property
     def employee_id(self) -> str:
         return self._employee_id
@@ -1690,6 +1652,7 @@ class Librarian(User):
     def admin_rights(self) -> bool:
         return self._admin_rights
 
+     
     def add_book_to_library(self, library: Library, book: Book) -> None:
         """Добавляет книгу в библиотеку"""
         library.add_book(book)
@@ -1720,6 +1683,7 @@ class Librarian(User):
         """Возвращает статистику библиотеки"""
         return library.get_statistics()
 
+     
     def to_dict(self) -> Dict[str, Any]:
         base_dict = super().to_dict()
         base_dict.update({
@@ -1758,12 +1722,12 @@ class Librarian(User):
 
 def indent(elem, level=0):
     """Добавляет отступы и переносы строк для красивого XML"""
-    i = "\n" + level * "    "
+    i = "\n" + level*"    "
     if len(elem):
         if not elem.text or not elem.text.strip():
             elem.text = i + "    "
         for child in elem:
-            indent(child, level + 1)
+            indent(child, level+1)
         if not elem.tail or not elem.tail.strip():
             elem.tail = i
     else:
@@ -1771,11 +1735,11 @@ def indent(elem, level=0):
             elem.tail = i
 
 
+
 def save_authors_to_json(authors: List[Author], filename: str) -> None:
     """Сохраняет список авторов в JSON файл"""
     with open(filename, "w", encoding="utf-8") as f:
         json.dump([a.to_dict() for a in authors], f, ensure_ascii=False, indent=4)
-
 
 def load_authors_from_json(filename: str) -> List[Author]:
     """Загружает список авторов из JSON файла"""
@@ -1783,9 +1747,8 @@ def load_authors_from_json(filename: str) -> List[Author]:
         data = json.load(f)
     authors = []
     for a_data in data:
-        authors.append(Author.from_dict(a_data))
+        authors.append(Author.from_dict(a_data))  
     return authors
-
 
 def save_authors_to_xml(authors: List[Author], filename: str) -> None:
     """Сохраняет список авторов в XML файл"""
@@ -1798,7 +1761,7 @@ def save_authors_to_xml(authors: List[Author], filename: str) -> None:
         if author.country:
             ET.SubElement(a_el, "country").text = author.country
 
-    indent(root)
+    indent(root)  
     tree = ET.ElementTree(root)
     tree.write(filename, encoding="utf-8", xml_declaration=True)
 
@@ -1810,8 +1773,8 @@ def load_authors_from_xml(filename: str) -> List[Author]:
     authors = []
 
     for a_el in root.findall("author"):
-        author_id = a_el.get("id")
-        name = a_el.find("name").text
+        author_id = a_el.get("id")  
+        name = a_el.find("name").text  
         birth_year_el = a_el.find("birth_year")
         birth_year = int(birth_year_el.text) if birth_year_el is not None else None
         country_el = a_el.find("country")
@@ -1827,16 +1790,14 @@ def save_genres_to_json(genres: List[Genre], filename: str) -> None:
     with open(filename, "w", encoding="utf-8") as f:
         json.dump([g.to_dict() for g in genres], f, ensure_ascii=False, indent=4)
 
-
 def load_genres_from_json(filename: str) -> List[Genre]:
     """Загружает список жанров из JSON файла"""
     with open(filename, "r", encoding="utf-8") as f:
         data = json.load(f)
     genres = []
     for g_data in data:
-        genres.append(Genre.from_dict(g_data))
+        genres.append(Genre.from_dict(g_data))  
     return genres
-
 
 def save_genres_to_xml(genres: List[Genre], filename: str) -> None:
     """Сохраняет список жанров в XML файл"""
@@ -1847,10 +1808,9 @@ def save_genres_to_xml(genres: List[Genre], filename: str) -> None:
         if genre.description:
             ET.SubElement(g_el, "description").text = genre.description
 
-    indent(root)
+    indent(root) 
     tree = ET.ElementTree(root)
     tree.write(filename, encoding="utf-8", xml_declaration=True)
-
 
 def load_genres_from_xml(filename: str) -> List[Genre]:
     """Считывает жанры из XML и возвращает список объектов Genre"""
@@ -1859,7 +1819,7 @@ def load_genres_from_xml(filename: str) -> List[Genre]:
     genres = []
 
     for g_el in root.findall("genre"):
-        name = g_el.find("name").text
+        name = g_el.find("name").text  
         description_el = g_el.find("description")
         description = description_el.text if description_el is not None else ""
         genres.append(Genre(name, description))
@@ -1871,13 +1831,12 @@ def save_publishers_to_json(publishers: List[Publisher], filename: str) -> None:
     with open(filename, "w", encoding="utf-8") as f:
         json.dump([p.to_dict() for p in publishers], f, ensure_ascii=False, indent=4)
 
-
 def load_publishers_from_json(filename: str) -> List[Publisher]:
     with open(filename, "r", encoding="utf-8") as f:
         data = json.load(f)
     return [Publisher.from_dict(p_data) for p_data in data]
 
-
+ 
 def save_publishers_to_xml(publishers: List[Publisher], filename: str) -> None:
     root = ET.Element("publishers")
     for publisher in publishers:
@@ -1889,7 +1848,6 @@ def save_publishers_to_xml(publishers: List[Publisher], filename: str) -> None:
     indent(root)
     tree = ET.ElementTree(root)
     tree.write(filename, encoding="utf-8", xml_declaration=True)
-
 
 def load_publishers_from_xml(filename: str) -> List[Publisher]:
     tree = ET.parse(filename)
@@ -1904,8 +1862,7 @@ def load_publishers_from_xml(filename: str) -> List[Publisher]:
         publishers.append(Publisher(publisher_id, name, location))
 
     return publishers
-
-
+ 
 def save_books_to_json(books: List[Book], filename: str) -> None:
     """Сохраняет список книг в JSON файл"""
     with open(filename, "w", encoding="utf-8") as f:
@@ -1922,6 +1879,7 @@ def load_books_from_json(filename: str) -> List[Book]:
     return books
 
 
+ 
 def save_books_to_xml(books: List[Book], filename: str) -> None:
     """Сохраняет список книг в XML файл"""
     root = ET.Element("books")
@@ -1948,11 +1906,12 @@ def save_books_to_xml(books: List[Book], filename: str) -> None:
         if book.publisher.location:
             ET.SubElement(publisher_el, "location").text = book.publisher.location
 
+
         ET.SubElement(b_el, "year").text = str(book.year)
         if book.pages is not None:
             ET.SubElement(b_el, "pages").text = str(book.pages)
 
-    indent(root)
+    indent(root) 
     tree = ET.ElementTree(root)
     tree.write(filename, encoding="utf-8", xml_declaration=True)
 
@@ -2207,79 +2166,6 @@ def load_borrow_records_from_xml(filename: str,
     return records
 
 
-def save_fines_to_json(fines: List[Fine], filename: str) -> None:
-    """Сохраняет список штрафов в JSON файл"""
-    with open(filename, "w", encoding="utf-8") as f:
-        json.dump([fine.to_dict() for fine in fines], f, ensure_ascii=False, indent=4)
-
-
-def load_fines_from_json(filename: str,
-                         users_dict: Dict[str, User] = None,
-                         borrow_records_dict: Dict[str, BorrowRecord] = None) -> List[Fine]:
-    """Загружает список штрафов из JSON файла"""
-    with open(filename, "r", encoding="utf-8") as f:
-        data = json.load(f)
-
-    fines = []
-    for f_data in data:
-        try:
-            fine = Fine.from_dict(f_data, users_dict, borrow_records_dict)
-            fines.append(fine)
-        except LibraryException as e:
-            print(f"Ошибка загрузки штрафа {f_data.get('fine_id')}: {e}")
-
-    return fines
-
-
-def save_fines_to_xml(fines: List[Fine], filename: str) -> None:
-    """Сохраняет список штрафов в XML файл"""
-    root = ET.Element("fines")
-
-    for fine in fines:
-        f_el = ET.SubElement(root, "fine", {"id": fine.fine_id})
-
-        ET.SubElement(f_el, "user_id").text = fine.user.user_id
-        ET.SubElement(f_el, "borrow_record_id").text = fine.borrow_record.record_id
-        ET.SubElement(f_el, "amount").text = str(fine.amount)
-        ET.SubElement(f_el, "reason").text = fine.reason
-        ET.SubElement(f_el, "paid").text = str(fine.paid)
-
-    indent(root)
-    tree = ET.ElementTree(root)
-    tree.write(filename, encoding="utf-8", xml_declaration=True)
-
-
-def load_fines_from_xml(filename: str,
-                        users_dict: Dict[str, User] = None,
-                        borrow_records_dict: Dict[str, BorrowRecord] = None) -> List[Fine]:
-    """Загружает список штрафов из XML файла"""
-    tree = ET.parse(filename)
-    root = tree.getroot()
-
-    fines = []
-    for f_el in root.findall("fine"):
-        try:
-            fine_id = f_el.get("id")
-            user_id = f_el.find("user_id").text
-            borrow_record_id = f_el.find("borrow_record_id").text
-            amount = float(f_el.find("amount").text)
-            reason = f_el.find("reason").text
-            paid = f_el.find("paid").text.lower() == "true"
-
-            if users_dict and user_id in users_dict and borrow_records_dict and borrow_record_id in borrow_records_dict:
-                user = users_dict[user_id]
-                borrow_record = borrow_records_dict[borrow_record_id]
-
-                fine = Fine(fine_id, user, borrow_record, amount, reason, paid)
-                fines.append(fine)
-            else:
-                print(f"Не найден пользователь или запись для штрафа {fine_id}")
-
-        except Exception as e:
-            print(f"Ошибка загрузки штрафа {f_el.get('id')}: {e}")
-
-    return fines
-
 
 def save_fines_to_json(fines: List[Fine], filename: str) -> None:
     """Сохраняет список штрафов в JSON файл"""
@@ -2353,6 +2239,82 @@ def load_fines_from_xml(filename: str,
             print(f"Ошибка загрузки штрафа {f_el.get('id')}: {e}")
 
     return fines
+
+
+
+def save_fines_to_json(fines: List[Fine], filename: str) -> None:
+    """Сохраняет список штрафов в JSON файл"""
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump([fine.to_dict() for fine in fines], f, ensure_ascii=False, indent=4)
+
+
+def load_fines_from_json(filename: str,
+                         users_dict: Dict[str, User] = None,
+                         borrow_records_dict: Dict[str, BorrowRecord] = None) -> List[Fine]:
+    """Загружает список штрафов из JSON файла"""
+    with open(filename, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    fines = []
+    for f_data in data:
+        try:
+            fine = Fine.from_dict(f_data, users_dict, borrow_records_dict)
+            fines.append(fine)
+        except LibraryException as e:
+            print(f"Ошибка загрузки штрафа {f_data.get('fine_id')}: {e}")
+
+    return fines
+
+
+def save_fines_to_xml(fines: List[Fine], filename: str) -> None:
+    """Сохраняет список штрафов в XML файл"""
+    root = ET.Element("fines")
+
+    for fine in fines:
+        f_el = ET.SubElement(root, "fine", {"id": fine.fine_id})
+
+        ET.SubElement(f_el, "user_id").text = fine.user.user_id
+        ET.SubElement(f_el, "borrow_record_id").text = fine.borrow_record.record_id
+        ET.SubElement(f_el, "amount").text = str(fine.amount)
+        ET.SubElement(f_el, "reason").text = fine.reason
+        ET.SubElement(f_el, "paid").text = str(fine.paid)
+
+    indent(root)
+    tree = ET.ElementTree(root)
+    tree.write(filename, encoding="utf-8", xml_declaration=True)
+
+
+def load_fines_from_xml(filename: str,
+                        users_dict: Dict[str, User] = None,
+                        borrow_records_dict: Dict[str, BorrowRecord] = None) -> List[Fine]:
+    """Загружает список штрафов из XML файла"""
+    tree = ET.parse(filename)
+    root = tree.getroot()
+
+    fines = []
+    for f_el in root.findall("fine"):
+        try:
+            fine_id = f_el.get("id")
+            user_id = f_el.find("user_id").text
+            borrow_record_id = f_el.find("borrow_record_id").text
+            amount = float(f_el.find("amount").text)
+            reason = f_el.find("reason").text
+            paid = f_el.find("paid").text.lower() == "true"
+
+            if users_dict and user_id in users_dict and borrow_records_dict and borrow_record_id in borrow_records_dict:
+                user = users_dict[user_id]
+                borrow_record = borrow_records_dict[borrow_record_id]
+
+                fine = Fine(fine_id, user, borrow_record, amount, reason, paid)
+                fines.append(fine)
+            else:
+                print(f"Не найден пользователь или запись для штрафа {fine_id}")
+
+        except Exception as e:
+            print(f"Ошибка загрузки штрафа {f_el.get('id')}: {e}")
+
+    return fines
+
 
 
 def save_reservations_to_json(reservations: List[Reservation], filename: str) -> None:
@@ -2431,6 +2393,7 @@ def load_reservations_from_xml(filename: str,
     return reservations
 
 
+
 def save_reviews_to_json(reviews: List[Review], filename: str) -> None:
     """Сохраняет список отзывов в JSON файл"""
     with open(filename, "w", encoding="utf-8") as f:
@@ -2503,6 +2466,7 @@ def load_reviews_from_xml(filename: str,
             print(f"Ошибка загрузки отзыва {r_el.get('id')}: {e}")
 
     return reviews
+
 
 
 def save_library_to_json(library: Library, filename: str) -> None:
@@ -2636,3 +2600,86 @@ def load_librarians_from_xml(filename: str, books_dict: Dict[str, Book] = None) 
             print(f"Ошибка загрузки библиотекаря {l_el.get('id')}: {e}")
 
     return librarians
+
+
+# ДЕМОНСТРАЦИЯ РАБОТЫ
+
+library = Library("Главная библиотека")
+
+# Создание авторов
+author1 = Author("A1", "Лев Толстой", 1828, "Россия")
+author2 = Author("A2", "Фёдор Достоевский", 1821, "Россия")
+author3 = Author("A3", "Антон Чехов", 1860, "Россия")
+
+# Создание жанров
+genre1 = Genre("Роман", "Крупное повествовательное произведение")
+genre2 = Genre("Рассказ", "Небольшое прозаическое произведение")
+
+# Создание издателей
+publisher1 = Publisher("P1", "Эксмо", "Москва")
+publisher2 = Publisher("P2", "АСТ", "Москва")
+
+# Создание книг
+book1 = Book("978-5-699-12014-7", "Война и мир", [author1], genre1, publisher1, 1869, 1225)
+book2 = Book("978-5-17-067555-8", "Преступление и наказание", [author2], genre1, publisher2, 1866, 671)
+book3 = Book("978-5-389-08255-5", "Вишневый сад", [author3], genre2, publisher1, 1904, 150)
+
+# Добавление в библиотеку
+library.add_author(author1)
+library.add_author(author2)
+library.add_author(author3)
+library.add_genre(genre1)
+library.add_genre(genre2)
+library.add_publisher(publisher1)
+library.add_publisher(publisher2)
+library.add_book(book1)
+library.add_book(book2)
+library.add_book(book3)
+
+# Создание пользователей
+user1 = User("U1", "Иван Петров")
+user2 = User("U2", "Мария Сидорова")
+library.add_user(user1)
+library.add_user(user2)
+
+
+print("Создана библиотека с книгами:")
+for book in library.books.values():
+    print(f"- {book.title} ({book.authors[0].name})")
+
+print(f"\nВсего книг: {len(library.books)}")
+print(f"Всего пользователей: {len(library.users)}")
+
+# Выдача книги
+due_date = datetime.now() + timedelta(days=14)
+record = library.borrow_book("U1", "978-5-699-12014-7", due_date)
+print(f"\nКнига '{record.book.title}' выдана пользователю {record.user.name}")
+
+# Поиск книг
+print("\nПоиск книг Толстого:")
+found_books = library.search_books(author="Толстой")
+for book in found_books:
+    print(f"- {book.title}")
+
+# Сохранение в JSON
+save_library_to_json(library, "library_demo.json")
+save_books_to_json(list(library.books.values()), "books_demo.json")
+save_authors_to_json(list(library.authors.values()), "authors_demo.json")
+
+# Сохранение в XML
+save_library_to_xml(library, "library_demo.xml")
+save_books_to_xml(list(library.books.values()), "books_demo.xml")
+save_authors_to_xml(list(library.authors.values()), "authors_demo.xml")
+
+print("\nДанные сохранены в файлы JSON и XML")
+
+# Загрузка из JSON для демонстрации
+loaded_library = load_library_from_json("library_demo.json")
+print(f"\nЗагружена библиотека: {loaded_library.name}")
+print(f"Книг загружено: {len(loaded_library.books)}")
+
+# Статистика
+stats = library.get_statistics()
+print("\nСтатистика библиотеки:")
+for key, value in stats.items():
+    print(f"{key}: {value}")
